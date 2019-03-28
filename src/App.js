@@ -8,8 +8,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <header className="App-header">
-        </header>
+        <div>
+          <h1>Ugly Styles</h1>
+        </div>
       </div>
     );
   }
