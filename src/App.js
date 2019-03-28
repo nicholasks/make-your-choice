@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import Header from './containers/Header/';
 import OverallTable from './components/OverallTable/';
+import UserVoteTable from './components/UserVoteTable/';
 import LoginForm from './components/LoginForm/';
 
 import logo from './logo.svg';
@@ -19,7 +20,8 @@ class App extends Component {
         <div>
           <Route path="/" exact component={OverallTable} />
           <Route path="/login" component={LoginForm} />
-          <Route path="/createAccount" exact component={OverallTable} />
+          <Route path="/createAccount" component={OverallTable} />
+          <Route path="/uservotes" component={UserVoteTable} />
 
         </div>
       </BrowserRouter>

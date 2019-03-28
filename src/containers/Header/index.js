@@ -20,6 +20,11 @@ class Header extends Component {
             Live Status
           </Link>
           <Link
+            to="/uservotes/"
+            style={pStyle}>
+            Users Votes
+          </Link>
+          <Link
             to="/vote/"
             style={pStyle}>
             Vote Now
