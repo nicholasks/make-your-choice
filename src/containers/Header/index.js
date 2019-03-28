@@ -14,8 +14,16 @@ class Header extends Component {
           </Link>
         </header>
         <div style={{display: 'flex', direction: 'row'}}>
-          <p style={pStyle}>Live Status</p>
-          <p style={pStyle}>Vote now</p>
+          <Link
+            to="/"
+            style={pStyle}>
+            Live Status
+          </Link>
+          <Link
+            to="/vote/"
+            style={pStyle}>
+            Vote Now
+          </Link>
         </div>
       </div>
     )
