@@ -34,20 +34,19 @@ const linkStyle = {
   color: 'currentColor',
   flex: 1,
   padding: '10px 2px',
-  border: '1px solid red',
+  border: '1px solid #474d59',
   margin: '25px 5px',
   textDecoration: 'none',
-  hoverBackground: '#666'
 }
 
 const divStyle = {
-  border: '2px solid blue',
   margin: '0px'
 }
 
 const headerStyle = {
   textAlign: 'center',
   display: 'flex',
+  flexWrap: 'wrap',
   background: '#282c34',
   color: '#fff',
   padding: '10px',
@@ -58,7 +57,10 @@ const headerStyle = {
 const pStyle = {
   textAlign: 'center',
   flex: '1',
-  border: '1px solid red'
+  color: '#fff',
+  background: '#212630',
+  border: '2px solid #4a515e',
+  borderLeft: '0px'
 }
 
 export default Header;
