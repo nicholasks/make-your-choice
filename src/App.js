@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import Header from './containers/Header/';
 import OverallTable from './components/OverallTable/';
 import UserVoteTable from './components/UserVoteTable/';
+import Vote from './components/Vote/';
 import LoginForm from './components/LoginForm/';
 
 import logo from './logo.svg';
@@ -22,6 +23,7 @@ class App extends Component {
           <Route path="/login" component={LoginForm} />
           <Route path="/createAccount" component={OverallTable} />
           <Route path="/uservotes" component={UserVoteTable} />
+          <Route path="/vote" component={Vote} />
 
         </div>
       </BrowserRouter>
