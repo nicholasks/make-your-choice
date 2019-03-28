@@ -8,10 +8,15 @@ class OverallTable extends Component {
     return(
       <React.Fragment>
         <h1 style={h1Style}>Votes per Character</h1>
-        <ReactTable data={data} columns={columns} pageSize={'18'}/>
+        <ReactTable className='-striped'style={tableStyle} data={data} columns={columns} pageSize={'18'}/>
       </React.Fragment>
     )
   }
+}
+
+const tableStyle = {
+  textAlign: 'center',
+  textOverflow: 'ellipsis',
 }
 
 const h1Style = {
