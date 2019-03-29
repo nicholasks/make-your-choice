@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import ReactTable from "react-table";
-import update from 'react-addons-update';
+import update from 'immutability-helper';
 import 'react-table/react-table.css'
+import $ from 'jquery';
 
 import styles from './styles';
 
 class Vote extends Component {
   state = {
+    selectedList : [
+
+    ],
     columns: [
       {
         Header: 'ID',
@@ -46,15 +50,19 @@ class Vote extends Component {
     ]
   }
 
-  addOrRm = (ev) => {
-    console.log(ev.target.id);
-  }
 
   addCheckBox = () => {
     for (var i in this.state.data) {
-      var botao = <input id={this.state.data[i].id} type='checkbox' onChange={(ev) => {this.addOrRm(ev)}} style={styles.inpStyle}></input>;
+      var id = this.state.data[i].id
+      var botao = <input id={'ch' + id} charid={id} type='checkbox' onChange={(ev) => {this.addOrRm(ev)}} style={styles.inpStyle}></input>;
       this.state.data[i].selected = botao;
     }
+  }
+
+  addOrRm = (ev) => {
+    console.log(ev.target);
+    let id = ev.target.getAttribute('charid');
+    console.log(id);
   }
 
   render() {
@@ -67,8 +75,5 @@ class Vote extends Component {
     )
   }
 }
-
-var d = new Date();
-var dattt = d.toISOString();
 
 export default Vote;
