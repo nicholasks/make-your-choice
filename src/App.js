@@ -6,13 +6,8 @@ import UserVoteTable from './components/UserVoteTable/';
 import Vote from './components/Vote/';
 import LoginForm from './components/LoginForm/';
 
-import logo from './logo.svg';
 import './App.css';
 
-
-function Login() {
-  return <h2><center>Login Page</center></h2>;
-}
 class App extends Component {
   render() {
     return (
