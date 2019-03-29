@@ -8,9 +8,8 @@ import styles from './styles';
 
 class Vote extends Component {
   state = {
-    selectedList : [
-
-    ],
+    qtSelected: 0,
+    selectedList : [],
     columns: [
       {
         Header: 'ID',
@@ -60,9 +59,27 @@ class Vote extends Component {
   }
 
   addOrRm = (ev) => {
-    console.log(ev.target);
+    // console.log(ev.target);
     let id = ev.target.getAttribute('charid');
-    console.log(id);
+    if ($('#'+ ev.target.id).prop('checked')){
+      this.setState( state => {
+        const selectedList = state.selectedList.concat(id);
+        return {
+          selectedList
+        }
+      });
+    } else {
+      this.setState( state => {
+        const selectedList = state.selectedList.filter((item, j) => id === j)
+        return {
+          selectedList
+        }
+      });
+    }
+    // console.log(id);
+
+    // let qt = $( "input:checked" ).length;
+    // $( "#louca" ).text( qt + (qt === 1 ? " is" : " are") + " checked!" );
   }
 
   render() {
@@ -71,6 +88,7 @@ class Vote extends Component {
         {this.addCheckBox()}
         <h1 style={styles.h1Style}>Vote Now</h1>
         <ReactTable className='-striped' sortable={false} style={styles.tableStyle} data={this.state.data} columns={this.state.columns} pageSize={'10'}/>
+        <div id="louca"></div>
       </React.Fragment>
     )
   }
