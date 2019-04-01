@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactTable from "react-table";
-import update from 'immutability-helper';
 import 'react-table/react-table.css'
 import $ from 'jquery';
 
@@ -49,7 +48,6 @@ class Vote extends Component {
     ]
   }
 
-
   addCheckBox = () => {
     for (var i in this.state.data) {
       var id = this.state.data[i].id
@@ -59,27 +57,20 @@ class Vote extends Component {
   }
 
   addOrRm = (ev) => {
-    // console.log(ev.target);
     let id = ev.target.getAttribute('charid');
     if ($('#'+ ev.target.id).prop('checked')){
-      this.setState( state => {
-        const selectedList = state.selectedList.concat(id);
-        return {
-          selectedList
-        }
-      });
+      this.setState({
+        selectedList: [...this.state.selectedList, id]
+      })
     } else {
-      this.setState( state => {
-        const selectedList = state.selectedList.filter((item, j) => id === j)
-        return {
-          selectedList
-        }
+      const newList = this.state.selectedList.filter(item => {
+        return item !== id;
       });
-    }
-    // console.log(id);
 
-    // let qt = $( "input:checked" ).length;
-    // $( "#louca" ).text( qt + (qt === 1 ? " is" : " are") + " checked!" );
+      this.setState({
+        selectedList: [...newList]
+      })
+    }
   }
 
   render() {
