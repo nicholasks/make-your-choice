@@ -182,7 +182,7 @@ class Vote extends Component {
       <React.Fragment>
         <button onClick={(ev) => {this.changeInterface()}}>Click</button>
         {this.addCheckBox()}
-        {this.state.voted ? this.voteInterface() : this.alreadyVotedInterface()}
+        {this.state.voted ? this.alreadyVotedInterface() : this.voteInterface() }
       </React.Fragment>
     )
   }
