@@ -12,15 +12,16 @@ import styles from './styles';
 class Vote extends Component {
   state = {
     maxVotesPerUser: 5,
+    voted: false,
     selectedList : [],
     columns: [
       {
         Header: 'ID',
-        accessor: 'id' // String-based value accessors!
+        accessor: 'id'
       },
       {
         Header: 'Character name',
-        accessor: 'character' // String-based value accessors!
+        accessor: 'character'
       },
       {
         Header: 'Select',
@@ -31,28 +32,58 @@ class Vote extends Component {
     data: [
       {
         id: '0',
-        character: 'Belinha'
+        character: 'Sansa Stark'
       },
       {
         id: '1',
-        character: 'Bazquxfoo'
+        character: 'Jon Snow'
       },
       {
         id: '2',
-        character: 'Beltrana'
+        character: 'Ned Stark'
       },
       {
         id: '3',
-        character: 'Foobar'
+        character: 'Daenerys Targaryen'
       },
       {
         id: '4',
-        character: 'Quxbaz'
+        character: 'Arya Stark'
       },
       {
         id: '5',
-        character: 'Jordana'
-      }
+        character: 'Joffrey Baratheon'
+      },
+      {
+        id: '6',
+        character: 'Tyrion Lannister'
+      },
+      {
+        id: '7',
+        character: 'Melisandre'
+      },
+      {
+        id: '8',
+        character: 'Varys'
+      },
+    ],
+
+    selectedData: [
+      {
+        charname: 'Varys'
+      },
+      {
+        charname: 'Melisandre'
+      },
+      {
+        charname: 'Joffrey Baratheon'
+      },
+      {
+        charname: 'Arya Stark'
+      },
+      {
+        charname: 'Daenerys Targaryen'
+      },
     ]
   }
 
@@ -92,10 +123,9 @@ class Vote extends Component {
     }
   }
 
-  render() {
-    return(
-      <React.Fragment>
-        {this.addCheckBox()}
+  voteInterface = () => {
+    const pageDiv = (
+      <div id="voteDiv">
         <h1 style={styles.h1Style}>Vote Now</h1>
         <ReactTable
           className='-striped'
@@ -104,7 +134,7 @@ class Vote extends Component {
           data={this.state.data}
           columns={this.state.columns}
           pageSize={'16'}
-        />
+          />
         <div style={styles.divBt}>
           <div style={{float: 'left', flex:2}}></div>
           <div style={styles.divBtSec}>
@@ -112,7 +142,47 @@ class Vote extends Component {
             <Button secondary>Post your votes</Button>
           </div>
         </div>
+      </div>
+    )
+    return pageDiv
+  }
 
+  alreadyVotedInterface = () => {
+    const pageDiv = (
+      <div id="userVoteList">
+        <h1 style={styles.h1Style}>Already voted!</h1>
+        <ReactTable
+          className='-striped'
+          sortable={false}
+          showPagination={false}
+          style={styles.tableStyle}
+          data={this.state.selectedData}
+          columns={[{Header: 'Characters selected', accessor: 'charname'}]}
+          pageSize={'6'}
+          />
+      </div>
+    )
+    return pageDiv
+  }
+
+  changeInterface = () => {
+    if (this.state.voted) {
+      this.setState({
+        voted: false
+      });
+    } else {
+      this.setState({
+        voted: true
+      });
+    }
+  }
+
+  render() {
+    return(
+      <React.Fragment>
+        <button onClick={(ev) => {this.changeInterface()}}>Click</button>
+        {this.addCheckBox()}
+        {this.state.voted ? this.voteInterface() : this.alreadyVotedInterface()}
       </React.Fragment>
     )
   }
