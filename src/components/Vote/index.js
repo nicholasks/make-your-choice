@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import ReactTable from "react-table";
-import { Button, Checkbox } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import $ from 'jquery';
 
 import 'react-table/react-table.css'
 import 'semantic-ui-css/semantic.min.css'
 
-
-
 import styles from './styles';
+
 
 class Vote extends Component {
   state = {
@@ -72,7 +71,6 @@ class Vote extends Component {
   }
 
   addOrRm = (ev) => {
-    console.log(ev.target);
     let id = ev.target.getAttribute('charid');
     if ($('#'+ ev.target.id).prop('checked')){
       if (this.state.selectedList.length < this.state.maxVotesPerUser) {
