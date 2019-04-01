@@ -7,7 +7,7 @@ import styles from './styles';
 
 class Vote extends Component {
   state = {
-    qtSelected: 0,
+    maxVotesPerUser: 5,
     selectedList : [],
     columns: [
       {
@@ -27,11 +27,11 @@ class Vote extends Component {
     data: [
       {
         id: '0',
-        character: 'GUlana'
+        character: 'Belinha'
       },
       {
         id: '1',
-        character: 'Cicrana'
+        character: 'Bazquxfoo'
       },
       {
         id: '2',
@@ -39,11 +39,15 @@ class Vote extends Component {
       },
       {
         id: '3',
-        character: 'Beltrana22'
+        character: 'Foobar'
       },
       {
         id: '4',
-        character: 'Suzana'
+        character: 'Quxbaz'
+      },
+      {
+        id: '5',
+        character: 'Jordana'
       }
     ]
   }
@@ -51,7 +55,7 @@ class Vote extends Component {
   addCheckBox = () => {
     for (var i in this.state.data) {
       var id = this.state.data[i].id
-      var botao = <input id={'ch' + id} charid={id} type='checkbox' onChange={(ev) => {this.addOrRm(ev)}} style={styles.inpStyle}></input>;
+      var botao = <input id={'ckBtn' + id} charid={id} type='checkbox' onChange={(ev) => {this.addOrRm(ev)}} style={styles.inpStyle}></input>;
       this.state.data[i].selected = botao;
     }
   }
@@ -59,9 +63,15 @@ class Vote extends Component {
   addOrRm = (ev) => {
     let id = ev.target.getAttribute('charid');
     if ($('#'+ ev.target.id).prop('checked')){
-      this.setState({
-        selectedList: [...this.state.selectedList, id]
-      })
+      if (this.state.selectedList.length < this.state.maxVotesPerUser) {
+        this.setState({
+          selectedList: [...this.state.selectedList, id]
+        })
+
+      } else {
+        alert('Max votes per User is ' + this.state.maxVotesPerUser);
+        $('#'+ ev.target.id).prop('checked', false)
+      }
     } else {
       const newList = this.state.selectedList.filter(item => {
         return item !== id;
