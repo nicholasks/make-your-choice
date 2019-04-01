@@ -105,7 +105,7 @@ class Vote extends Component {
           style={styles.tableStyle}
           data={this.state.data}
           columns={this.state.columns}
-          pageSize={'10'}
+          pageSize={'16'}
         />
         <div style={styles.divBt}>
           <div style={{float: 'left', flex:2}}></div>
