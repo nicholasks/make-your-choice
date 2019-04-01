@@ -55,6 +55,7 @@ const headerStyle = {
   background: '#282c34',
   color: '#fff',
   padding: '10px',
+  paddingLeft: '140px',
   margin: '0px',
   fontFamily: 'Courier New'
 }

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import ReactTable from "react-table";
-import 'react-table/react-table.css'
+import { Button, Checkbox } from 'semantic-ui-react'
 import $ from 'jquery';
+
+import 'react-table/react-table.css'
+import 'semantic-ui-css/semantic.min.css'
+
+
 
 import styles from './styles';
 
@@ -55,19 +60,25 @@ class Vote extends Component {
   addCheckBox = () => {
     for (var i in this.state.data) {
       var id = this.state.data[i].id
-      var botao = <input id={'ckBtn' + id} charid={id} type='checkbox' onChange={(ev) => {this.addOrRm(ev)}} style={styles.inpStyle}></input>;
+      var botao = <input
+        id={'ckBtn' + id}
+        charid={id}
+        type='checkbox'
+        onChange={(ev) => {this.addOrRm(ev)}}
+        style={styles.chkBoxStyle}
+      ></input>;
       this.state.data[i].selected = botao;
     }
   }
 
   addOrRm = (ev) => {
+    console.log(ev.target);
     let id = ev.target.getAttribute('charid');
     if ($('#'+ ev.target.id).prop('checked')){
       if (this.state.selectedList.length < this.state.maxVotesPerUser) {
         this.setState({
           selectedList: [...this.state.selectedList, id]
         })
-
       } else {
         alert('Max votes per User is ' + this.state.maxVotesPerUser);
         $('#'+ ev.target.id).prop('checked', false)
@@ -88,8 +99,22 @@ class Vote extends Component {
       <React.Fragment>
         {this.addCheckBox()}
         <h1 style={styles.h1Style}>Vote Now</h1>
-        <ReactTable className='-striped' sortable={false} style={styles.tableStyle} data={this.state.data} columns={this.state.columns} pageSize={'10'}/>
-        <div id="louca"></div>
+        <ReactTable
+          className='-striped'
+          sortable={false}
+          style={styles.tableStyle}
+          data={this.state.data}
+          columns={this.state.columns}
+          pageSize={'10'}
+        />
+        <div style={styles.divBt}>
+          <div style={{float: 'left', flex:2}}></div>
+          <div style={styles.divBtSec}>
+            <Button secondary>Clear</Button>
+            <Button secondary>Post your votes</Button>
+          </div>
+        </div>
+
       </React.Fragment>
     )
   }

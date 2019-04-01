@@ -1,16 +1,26 @@
 const styles = {
   tableStyle: {
     textAlign: 'center',
-    textOverflow: 'ellipsis', 
+    textOverflow: 'ellipsis',
   },
-  h1Style :{
+
+  h1Style : {
     textAlign: 'center',
     color: 'grey'
   },
-  inpStyle:{
-   margin: '25px',
-   border: '10px',
-   type: 'checkbox'
+
+  chkBoxStyle: {
+   margin: '10px'
+ },
+
+  divBt: {
+    display: 'flex',
+    direction: 'row',
+    overflow: 'auto'
+ },
+
+ divBtSec: {
+   float: 'right'
  }
 }
 
