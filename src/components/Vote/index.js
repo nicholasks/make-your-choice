@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactTable from "react-table";
-import { Button } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
 import $ from 'jquery';
 
 import 'react-table/react-table.css'
@@ -135,11 +135,11 @@ class Vote extends Component {
           columns={this.state.columns}
           pageSize={'16'}
           />
-        <div style={styles.divBt}>
-          <div style={{float: 'left', flex:2}}></div>
-          <div style={styles.divBtSec}>
-            <Button secondary>Clear</Button>
-            <Button secondary>Post your votes</Button>
+        <div className="ui grid">
+          <div className="right floated twelve wide column">
+            <Input labelPosition='left' type='text' placeholder='Amount' />
+            <button className="ui negative basic button">Clear Everything</button>
+            <button className="ui secondary basic button">Make you bet</button>
           </div>
         </div>
       </div>
