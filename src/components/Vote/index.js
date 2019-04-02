@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactTable from "react-table";
-import { Input } from 'semantic-ui-react'
+import { Input, Grid, Image } from 'semantic-ui-react'
 import $ from 'jquery';
 
 import 'react-table/react-table.css'
@@ -41,6 +41,38 @@ class Vote extends Component {
       {
         id: '2',
         character: 'Ned Stark'
+      },
+      {
+        id: '3',
+        character: 'Daenerys Targaryen'
+      },
+      {
+        id: '4',
+        character: 'Arya Stark'
+      },
+      {
+        id: '5',
+        character: 'Joffrey Baratheon'
+      },
+      {
+        id: '6',
+        character: 'Tyrion Lannister'
+      },
+      {
+        id: '3',
+        character: 'Daenerys Targaryen'
+      },
+      {
+        id: '4',
+        character: 'Arya Stark'
+      },
+      {
+        id: '5',
+        character: 'Joffrey Baratheon'
+      },
+      {
+        id: '6',
+        character: 'Tyrion Lannister'
       },
       {
         id: '3',
@@ -133,15 +165,18 @@ class Vote extends Component {
           style={styles.tableStyle}
           data={this.state.data}
           columns={this.state.columns}
-          pageSize={'16'}
+          pageSize={'12'}
           />
-        <div className="ui grid">
-          <div className="right floated twelve wide column">
-            <Input labelPosition='left' type='text' placeholder='Amount' />
-            <button className="ui negative basic button">Clear Everything</button>
-            <button className="ui secondary basic button">Make you bet</button>
-          </div>
-        </div>
+          <Grid>
+            <Grid.Column floated='left' mobile={16} tablet={8} computer={3}></Grid.Column>
+            <Grid.Column floated='right' mobile={16} tablet={8} computer={3}>
+              <div>
+                <Input size='large' labelPosition='left' type='text' placeholder='Amount' />
+                <button size='small' className="ui negative basic button">Clear Selection</button>
+                <button size='small' className="ui secondary basic button">Make you bet</button>
+              </div>
+            </Grid.Column>
+          </Grid>
       </div>
     )
     return pageDiv
