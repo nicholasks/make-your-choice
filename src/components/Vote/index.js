@@ -59,43 +59,43 @@ class Vote extends Component {
         character: 'Tyrion Lannister'
       },
       {
-        id: '3',
-        character: 'Daenerys Targaryen'
-      },
-      {
-        id: '4',
-        character: 'Arya Stark'
-      },
-      {
-        id: '5',
-        character: 'Joffrey Baratheon'
-      },
-      {
-        id: '6',
-        character: 'Tyrion Lannister'
-      },
-      {
-        id: '3',
-        character: 'Daenerys Targaryen'
-      },
-      {
-        id: '4',
-        character: 'Arya Stark'
-      },
-      {
-        id: '5',
-        character: 'Joffrey Baratheon'
-      },
-      {
-        id: '6',
-        character: 'Tyrion Lannister'
-      },
-      {
         id: '7',
-        character: 'Melisandre'
+        character: 'Daenerys Targaryen'
       },
       {
         id: '8',
+        character: 'Arya Stark'
+      },
+      {
+        id: '9',
+        character: 'Joffrey Baratheon'
+      },
+      {
+        id: '10',
+        character: 'Tyrion Lannister'
+      },
+      {
+        id: '11',
+        character: 'Daenerys Targaryen'
+      },
+      {
+        id: '12',
+        character: 'Arya Stark'
+      },
+      {
+        id: '13',
+        character: 'Joffrey Baratheon'
+      },
+      {
+        id: '14',
+        character: 'Tyrion Lannister'
+      },
+      {
+        id: '15',
+        character: 'Melisandre'
+      },
+      {
+        id: '16',
         character: 'Varys'
       },
     ],
@@ -122,7 +122,7 @@ class Vote extends Component {
   addCheckBox = () => {
     for (var i in this.state.data) {
       var id = this.state.data[i].id
-      var botao = <input
+      const botao = <input
         id={'ckBtn' + id}
         charid={id}
         type='checkbox'
@@ -165,6 +165,7 @@ class Vote extends Component {
           style={styles.tableStyle}
           data={this.state.data}
           columns={this.state.columns}
+          showPageSizeOptions={false}
           pageSize={'12'}
           />
           <Grid>
